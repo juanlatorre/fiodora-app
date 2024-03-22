@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2AD381F82BAE3EBD00CDF664 /* FiodoraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD381F72BAE3EBD00CDF664 /* FiodoraApp.swift */; };
+		2AD381FA2BAE3EBD00CDF664 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD381F92BAE3EBD00CDF664 /* ContentView.swift */; };
+		2AD381FC2BAE3EBE00CDF664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AD381FB2BAE3EBE00CDF664 /* Assets.xcassets */; };
+		2AD381FF2BAE3EBE00CDF664 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AD381FE2BAE3EBE00CDF664 /* Preview Assets.xcassets */; };
+		2AD382092BAE3EBE00CDF664 /* FiodoraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD382082BAE3EBE00CDF664 /* FiodoraTests.swift */; };
+		2AD382132BAE3EBE00CDF664 /* FiodoraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD382122BAE3EBE00CDF664 /* FiodoraUITests.swift */; };
+		2AD382152BAE3EBE00CDF664 /* FiodoraUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD382142BAE3EBE00CDF664 /* FiodoraUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2AD382052BAE3EBE00CDF664 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AD381EC2BAE3EBD00CDF664 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AD381F32BAE3EBD00CDF664;
+			remoteInfo = Fiodora;
+		};
+		2AD3820F2BAE3EBE00CDF664 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2AD381EC2BAE3EBD00CDF664 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AD381F32BAE3EBD00CDF664;
+			remoteInfo = Fiodora;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2AD381F42BAE3EBD00CDF664 /* Fiodora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiodora.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AD381F72BAE3EBD00CDF664 /* FiodoraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiodoraApp.swift; sourceTree = "<group>"; };
+		2AD381F92BAE3EBD00CDF664 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2AD381FB2BAE3EBE00CDF664 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2AD381FE2BAE3EBE00CDF664 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2AD382042BAE3EBE00CDF664 /* FiodoraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiodoraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AD382082BAE3EBE00CDF664 /* FiodoraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiodoraTests.swift; sourceTree = "<group>"; };
+		2AD3820E2BAE3EBE00CDF664 /* FiodoraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FiodoraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AD382122BAE3EBE00CDF664 /* FiodoraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiodoraUITests.swift; sourceTree = "<group>"; };
+		2AD382142BAE3EBE00CDF664 /* FiodoraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiodoraUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2AD381F12BAE3EBD00CDF664 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD382012BAE3EBE00CDF664 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD3820B2BAE3EBE00CDF664 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2AD381EB2BAE3EBD00CDF664 = {
+			isa = PBXGroup;
+			children = (
+				2AD381F62BAE3EBD00CDF664 /* Fiodora */,
+				2AD382072BAE3EBE00CDF664 /* FiodoraTests */,
+				2AD382112BAE3EBE00CDF664 /* FiodoraUITests */,
+				2AD381F52BAE3EBD00CDF664 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2AD381F52BAE3EBD00CDF664 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2AD381F42BAE3EBD00CDF664 /* Fiodora.app */,
+				2AD382042BAE3EBE00CDF664 /* FiodoraTests.xctest */,
+				2AD3820E2BAE3EBE00CDF664 /* FiodoraUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2AD381F62BAE3EBD00CDF664 /* Fiodora */ = {
+			isa = PBXGroup;
+			children = (
+				2AD381F72BAE3EBD00CDF664 /* FiodoraApp.swift */,
+				2AD381F92BAE3EBD00CDF664 /* ContentView.swift */,
+				2AD381FB2BAE3EBE00CDF664 /* Assets.xcassets */,
+				2AD381FD2BAE3EBE00CDF664 /* Preview Content */,
+			);
+			path = Fiodora;
+			sourceTree = "<group>";
+		};
+		2AD381FD2BAE3EBE00CDF664 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				2AD381FE2BAE3EBE00CDF664 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2AD382072BAE3EBE00CDF664 /* FiodoraTests */ = {
+			isa = PBXGroup;
+			children = (
+				2AD382082BAE3EBE00CDF664 /* FiodoraTests.swift */,
+			);
+			path = FiodoraTests;
+			sourceTree = "<group>";
+		};
+		2AD382112BAE3EBE00CDF664 /* FiodoraUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2AD382122BAE3EBE00CDF664 /* FiodoraUITests.swift */,
+				2AD382142BAE3EBE00CDF664 /* FiodoraUITestsLaunchTests.swift */,
+			);
+			path = FiodoraUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2AD381F32BAE3EBD00CDF664 /* Fiodora */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AD382182BAE3EBE00CDF664 /* Build configuration list for PBXNativeTarget "Fiodora" */;
+			buildPhases = (
+				2AD381F02BAE3EBD00CDF664 /* Sources */,
+				2AD381F12BAE3EBD00CDF664 /* Frameworks */,
+				2AD381F22BAE3EBD00CDF664 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fiodora;
+			productName = Fiodora;
+			productReference = 2AD381F42BAE3EBD00CDF664 /* Fiodora.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2AD382032BAE3EBE00CDF664 /* FiodoraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AD3821B2BAE3EBE00CDF664 /* Build configuration list for PBXNativeTarget "FiodoraTests" */;
+			buildPhases = (
+				2AD382002BAE3EBE00CDF664 /* Sources */,
+				2AD382012BAE3EBE00CDF664 /* Frameworks */,
+				2AD382022BAE3EBE00CDF664 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AD382062BAE3EBE00CDF664 /* PBXTargetDependency */,
+			);
+			name = FiodoraTests;
+			productName = FiodoraTests;
+			productReference = 2AD382042BAE3EBE00CDF664 /* FiodoraTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2AD3820D2BAE3EBE00CDF664 /* FiodoraUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AD3821E2BAE3EBE00CDF664 /* Build configuration list for PBXNativeTarget "FiodoraUITests" */;
+			buildPhases = (
+				2AD3820A2BAE3EBE00CDF664 /* Sources */,
+				2AD3820B2BAE3EBE00CDF664 /* Frameworks */,
+				2AD3820C2BAE3EBE00CDF664 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2AD382102BAE3EBE00CDF664 /* PBXTargetDependency */,
+			);
+			name = FiodoraUITests;
+			productName = FiodoraUITests;
+			productReference = 2AD3820E2BAE3EBE00CDF664 /* FiodoraUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2AD381EC2BAE3EBD00CDF664 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					2AD381F32BAE3EBD00CDF664 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					2AD382032BAE3EBE00CDF664 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 2AD381F32BAE3EBD00CDF664;
+					};
+					2AD3820D2BAE3EBE00CDF664 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 2AD381F32BAE3EBD00CDF664;
+					};
+				};
+			};
+			buildConfigurationList = 2AD381EF2BAE3EBD00CDF664 /* Build configuration list for PBXProject "Fiodora" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2AD381EB2BAE3EBD00CDF664;
+			productRefGroup = 2AD381F52BAE3EBD00CDF664 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2AD381F32BAE3EBD00CDF664 /* Fiodora */,
+				2AD382032BAE3EBE00CDF664 /* FiodoraTests */,
+				2AD3820D2BAE3EBE00CDF664 /* FiodoraUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2AD381F22BAE3EBD00CDF664 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD381FF2BAE3EBE00CDF664 /* Preview Assets.xcassets in Resources */,
+				2AD381FC2BAE3EBE00CDF664 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD382022BAE3EBE00CDF664 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD3820C2BAE3EBE00CDF664 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2AD381F02BAE3EBD00CDF664 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD381FA2BAE3EBD00CDF664 /* ContentView.swift in Sources */,
+				2AD381F82BAE3EBD00CDF664 /* FiodoraApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD382002BAE3EBE00CDF664 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD382092BAE3EBE00CDF664 /* FiodoraTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AD3820A2BAE3EBE00CDF664 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AD382132BAE3EBE00CDF664 /* FiodoraUITests.swift in Sources */,
+				2AD382152BAE3EBE00CDF664 /* FiodoraUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2AD382062BAE3EBE00CDF664 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AD381F32BAE3EBD00CDF664 /* Fiodora */;
+			targetProxy = 2AD382052BAE3EBE00CDF664 /* PBXContainerItemProxy */;
+		};
+		2AD382102BAE3EBE00CDF664 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AD381F32BAE3EBD00CDF664 /* Fiodora */;
+			targetProxy = 2AD3820F2BAE3EBE00CDF664 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2AD382162BAE3EBE00CDF664 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2AD382172BAE3EBE00CDF664 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2AD382192BAE3EBE00CDF664 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fiodora/Preview Content\"";
+				DEVELOPMENT_TEAM = 4N4N24C7TN;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.juanlatorre.fiodora.Fiodora;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2AD3821A2BAE3EBE00CDF664 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Fiodora/Preview Content\"";
+				DEVELOPMENT_TEAM = 4N4N24C7TN;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.juanlatorre.fiodora.Fiodora;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2AD3821C2BAE3EBE00CDF664 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4N4N24C7TN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.juanlatorre.fiodora.FiodoraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fiodora.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Fiodora";
+			};
+			name = Debug;
+		};
+		2AD3821D2BAE3EBE00CDF664 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4N4N24C7TN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.juanlatorre.fiodora.FiodoraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fiodora.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Fiodora";
+			};
+			name = Release;
+		};
+		2AD3821F2BAE3EBE00CDF664 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4N4N24C7TN;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.juanlatorre.fiodora.FiodoraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Fiodora;
+			};
+			name = Debug;
+		};
+		2AD382202BAE3EBE00CDF664 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4N4N24C7TN;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.juanlatorre.fiodora.FiodoraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Fiodora;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2AD381EF2BAE3EBD00CDF664 /* Build configuration list for PBXProject "Fiodora" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AD382162BAE3EBE00CDF664 /* Debug */,
+				2AD382172BAE3EBE00CDF664 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AD382182BAE3EBE00CDF664 /* Build configuration list for PBXNativeTarget "Fiodora" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AD382192BAE3EBE00CDF664 /* Debug */,
+				2AD3821A2BAE3EBE00CDF664 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AD3821B2BAE3EBE00CDF664 /* Build configuration list for PBXNativeTarget "FiodoraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AD3821C2BAE3EBE00CDF664 /* Debug */,
+				2AD3821D2BAE3EBE00CDF664 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2AD3821E2BAE3EBE00CDF664 /* Build configuration list for PBXNativeTarget "FiodoraUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AD3821F2BAE3EBE00CDF664 /* Debug */,
+				2AD382202BAE3EBE00CDF664 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2AD381EC2BAE3EBD00CDF664 /* Project object */;
+}
