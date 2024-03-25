@@ -1,0 +1,23 @@
+mutation Login($input: MutationLoginInput!) {
+	login(input: $input) {
+		__typename
+		... on MutationLoginSuccess {
+			__typename
+			data {
+				token
+				user {
+					createdAt
+					email
+					id
+					name
+					role
+					updatedAt
+				}
+			}
+		}
+		... on Error {
+			__typename
+			message
+		}
+	}
+}

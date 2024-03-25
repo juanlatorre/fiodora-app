@@ -13,7 +13,7 @@
     },
     "downloadTimeout": 60,
     "headers": [],
-    "outputPath": "./graphql/schema.graphql"
+    "outputPath": "./graphql/schema.graphqls"
   },
   "input" : {
     "operationSearchPaths" : [
