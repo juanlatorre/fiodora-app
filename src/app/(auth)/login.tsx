@@ -1,9 +1,9 @@
 import { SafeAreaView, View, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Title } from '../components/Title';
-import { Span } from '../components/Span';
-import { Card } from '../components/Card';
+import { Title } from '../../components/Title';
+import { Span } from '../../components/Span';
+import { Card } from '../../components/Card';
 import { TextInput } from 'react-native';
 import { router, Redirect } from 'expo-router';
 

@@ -1,11 +1,11 @@
 import { SafeAreaView, View, Dimensions, ScrollView } from 'react-native';
-import { Card } from '../components/Card';
-import { Title } from '../components/Title';
-import { ActionButton } from '../components/ActionButton';
+import { Card } from '../../components/Card';
+import { Title } from '../../components/Title';
+import { ActionButton } from '../../components/ActionButton';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Header } from '../components/Header';
-import { TransactionItem } from '../components/TransactionItem';
+import { Header } from '../../components/Header';
+import { TransactionItem } from '../../components/TransactionItem';
 import { useState } from 'react';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
@@ -14,7 +14,7 @@ import Animated, {
   withSpring,
   runOnJS,
 } from 'react-native-reanimated';
-import { Span } from '../components/Span';
+import { Span } from '../../components/Span';
 
 export default function HomeScreen() {
   const [currentBalanceIndex, setCurrentBalanceIndex] = useState(0);
