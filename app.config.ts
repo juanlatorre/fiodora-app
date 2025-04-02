@@ -21,6 +21,12 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         projectId: 'bd8c80fb-2776-41ea-be6f-8dc76cca5b41',
       },
     },
+    updates: {
+      url: 'https://u.expo.dev/bd8c80fb-2776-41ea-be6f-8dc76cca5b41',
+    },
+    runtimeVersion: {
+      policy: 'appVersion',
+    },
     android: {
       adaptiveIcon: {
         foregroundImage: './assets/images/adaptive-icon.png',
