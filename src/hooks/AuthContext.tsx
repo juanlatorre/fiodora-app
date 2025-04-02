@@ -26,15 +26,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Load token and user data from secure storage on mount
     Promise.all([SecureStore.getItemAsync(AUTH_TOKEN_KEY), SecureStore.getItemAsync(USER_DATA_KEY)])
       .then(([storedToken, storedUser]) => {
-        console.log('Loading from storage:', { storedToken, storedUser });
-
         try {
           setTokenState(storedToken);
           if (storedUser) {
             const parsedUser = JSON.parse(storedUser);
-            console.log('Parsed user:', parsedUser);
             if (!parsedUser?.id || !parsedUser?.name || !parsedUser?.email) {
-              console.warn('Invalid user data in storage:', parsedUser);
               setUserState(null);
             } else {
               setUserState(parsedUser);
@@ -43,40 +39,33 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setUserState(null);
           }
         } catch (error) {
-          console.error('Error parsing stored user:', error);
           setUserState(null);
         }
 
         setIsLoading(false);
       })
-      .catch(error => {
-        console.error('Error loading from storage:', error);
+      .catch(() => {
         setIsLoading(false);
       });
   }, []);
 
   const setAuth = async (newToken: string | null, newUser: AuthUser | null) => {
     try {
-      console.log('Setting auth:', { newToken, newUser });
-
       if (newToken && newUser) {
         await Promise.all([
           SecureStore.setItemAsync(AUTH_TOKEN_KEY, newToken),
           SecureStore.setItemAsync(USER_DATA_KEY, JSON.stringify(newUser)),
         ]);
-        console.log('Stored auth data successfully');
       } else {
         await Promise.all([
           SecureStore.deleteItemAsync(AUTH_TOKEN_KEY),
           SecureStore.deleteItemAsync(USER_DATA_KEY),
         ]);
-        console.log('Cleared auth data successfully');
       }
 
       setTokenState(newToken);
       setUserState(newUser);
     } catch (error) {
-      console.error('Error setting auth:', error);
       // Still update state even if storage fails
       setTokenState(newToken);
       setUserState(newUser);
