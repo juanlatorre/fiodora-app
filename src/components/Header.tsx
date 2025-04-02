@@ -1,10 +1,12 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Title } from './Title';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { twMerge } from 'tailwind-merge';
 
 interface HeaderProps {
   name: string;
   onNotificationPress?: () => void;
+  onMenuPress?: () => void;
 }
 
 function getInitialColor(name: string): string {
@@ -23,21 +25,27 @@ function getInitialColor(name: string): string {
   return colors[index] ?? 'bg-gray-500';
 }
 
-export function Header({ name, onNotificationPress }: HeaderProps) {
+export function Header({ name, onNotificationPress, onMenuPress }: HeaderProps) {
   const initial = name.charAt(0).toUpperCase();
   const bgColorClass = getInitialColor(name);
 
   return (
-    <View className="flex-row items-center justify-between mb-6">
+    <View className="flex-row items-center justify-between">
+      <TouchableOpacity onPress={onMenuPress} className="p-2">
+        <MaterialCommunityIcons name="menu" size={24} color="#352F3D" />
+      </TouchableOpacity>
+
       <View className="flex-row items-center">
-        <View className={`w-8 h-8 rounded-full mr-3 items-center justify-center ${bgColorClass}`}>
-          <Text className="text-white text-sm font-bold">{initial}</Text>
+        <View
+          className={twMerge('w-9 h-9 rounded-full items-center justify-center mr-3', bgColorClass)}
+        >
+          <Text className="text-white text-base font-bold">{initial}</Text>
         </View>
-        <Title className="text-lg text-text-primary">Hola, {name}</Title>
+        <Title className="text-xl text-text-primary">Hola, {name}</Title>
       </View>
 
       <TouchableOpacity onPress={onNotificationPress} className="p-2">
-        <MaterialCommunityIcons name="bell-outline" size={20} color="#352F3D" />
+        <MaterialCommunityIcons name="bell-outline" size={24} color="#352F3D" />
       </TouchableOpacity>
     </View>
   );

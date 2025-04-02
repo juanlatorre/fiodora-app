@@ -16,9 +16,12 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Span } from '../../components/Span';
 import { useAuth } from '../../hooks/AuthContext';
+import { Drawer } from 'react-native-drawer-layout';
+import { Menu } from '../../components/Menu';
 
 export default function HomeScreen() {
   const { user } = useAuth();
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const [currentBalanceIndex, setCurrentBalanceIndex] = useState(0);
   const translateX = useSharedValue(0);
@@ -225,117 +228,138 @@ export default function HomeScreen() {
   }));
 
   return (
-    <LinearGradient
-      colors={['#F0E7F5', '#D4C9E8']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={{ flex: 1 }}
+    <Drawer
+      open={drawerOpen}
+      onOpen={() => setDrawerOpen(true)}
+      onClose={() => setDrawerOpen(false)}
+      renderDrawerContent={() => <Menu />}
+      drawerStyle={{ width: '80%' }}
     >
-      <SafeAreaView className="flex-[1]">
-        <View className="flex-[1] overflow-hidden">
-          <View className="px-6">
-            <Header name={user?.name ?? 'Invitado'} onNotificationPress={() => {}} />
-          </View>
+      <View className="flex-[1] bg-white">
+        <LinearGradient
+          colors={['#F0E7F5', '#D4C9E8']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={{ flex: 1 }}
+        >
+          <SafeAreaView className="flex-[1]">
+            <View className="flex-[1] pt-4">
+              <View className="px-6 mb-6">
+                <Header
+                  name={user?.name ?? 'Invitado'}
+                  onNotificationPress={() => {}}
+                  onMenuPress={() => setDrawerOpen(true)}
+                />
+              </View>
 
-          <GestureDetector gesture={panGesture}>
-            <Animated.View
-              className="flex-row"
-              style={[{ width: SCREEN_WIDTH * balances.length }, animatedStyle]}
-            >
-              {balances.map(balance => (
-                <View key={balance.id} style={{ width: SCREEN_WIDTH }} className="px-6">
-                  <Card className="mb-6">
-                    <View className="rounded-3xl px-6 py-2 w-full">
-                      <Title className="text-sm text-text-secondary text-center mb-6">
-                        Balance actual · {balance.name}
-                      </Title>
-                      <View className="items-center w-full">
-                        <Title
-                          className={`mb-3 ${balance.amount > 9999999 ? 'text-4xl' : 'text-5xl'} text-text-primary`}
-                        >
-                          ${balance.amount.toLocaleString()}
-                        </Title>
-                        <View className="items-center">
-                          <Span className="text-xs text-text-secondary/80 mb-1">
-                            Proyectado próximo mes
-                          </Span>
-                          <Title
-                            className={`text-lg ${balance.nextMonthProjection > 0 ? 'text-successAlter' : 'text-text-secondary'}`}
-                          >
-                            ${balance.nextMonthProjection.toLocaleString()}
-                          </Title>
+              <GestureDetector gesture={panGesture}>
+                <Animated.View
+                  className="flex-row"
+                  style={[{ width: SCREEN_WIDTH * balances.length }, animatedStyle]}
+                >
+                  {balances.map(balance => (
+                    <View key={balance.id} style={{ width: SCREEN_WIDTH }} className="px-6">
+                      <Card>
+                        <View className="rounded-3xl px-6 py-4 w-full min-h-[140px] justify-between">
+                          <View>
+                            <Title className="text-sm text-text-secondary text-center mb-1">
+                              Balance actual · {balance.name}
+                            </Title>
+                          </View>
+
+                          <View className="items-center w-full">
+                            <Title
+                              className={`${balance.amount > 9999999 ? 'text-4xl' : 'text-5xl'} text-text-primary mb-1`}
+                            >
+                              ${balance.amount.toLocaleString()}
+                            </Title>
+                          </View>
+
+                          <View className="items-center">
+                            <Span className="text-xs text-text-secondary/80">
+                              Proyectado próximo mes
+                            </Span>
+                            <Title
+                              className={`text-lg ${balance.nextMonthProjection > 0 ? 'text-successAlter' : 'text-text-secondary'}`}
+                            >
+                              ${balance.nextMonthProjection.toLocaleString()}
+                            </Title>
+                          </View>
                         </View>
-                      </View>
+                      </Card>
                     </View>
-                  </Card>
-                </View>
-              ))}
-            </Animated.View>
-          </GestureDetector>
+                  ))}
+                </Animated.View>
+              </GestureDetector>
 
-          <View className="flex-row justify-center mb-4 -mt-2">
-            {balances.map((_, index) => (
-              <View
-                key={index}
-                className={`w-2 h-2 rounded-full mx-1 ${
-                  index === currentBalanceIndex ? 'bg-text-primary' : 'bg-text-secondary/30'
-                }`}
-              />
-            ))}
-          </View>
-
-          <View className="flex-row justify-between mt-0 mb-4 px-6">
-            <ActionButton
-              label="Abono"
-              icon={<MaterialCommunityIcons name="bank-transfer-in" size={22} color="#2D3A35" />}
-              onPress={() => {}}
-              className="flex-[1] mr-3"
-            />
-            <ActionButton
-              label="Gasto"
-              icon={<MaterialCommunityIcons name="bank-transfer-out" size={22} color="#2D3A35" />}
-              onPress={() => {}}
-              className="flex-[1] ml-3"
-            />
-          </View>
-
-          <View className="mt-0 flex-1 px-6">
-            <Title className="text-lg text-text-primary mb-3">Últimos movimientos</Title>
-
-            <ScrollView className="flex-1">
-              {filteredTransactions.length > 0 ? (
-                filteredTransactions.map(transaction => (
-                  <TransactionItem
-                    key={transaction.id}
-                    name={transaction.name}
-                    amount={transaction.amount}
-                    type={transaction.type}
-                    timestamp={transaction.timestamp}
-                    user={transaction.user}
+              <View className="flex-row justify-center mt-6 mb-6">
+                {balances.map((_, index) => (
+                  <View
+                    key={index}
+                    className={`w-2 h-2 rounded-full mx-1 ${
+                      index === currentBalanceIndex ? 'bg-text-primary' : 'bg-text-secondary/30'
+                    }`}
                   />
-                ))
-              ) : (
-                <View className="flex-1 items-center justify-center pt-10 pb-20">
-                  <View className="w-20 h-20 bg-surface rounded-2xl shadow-soft-sm items-center justify-center mb-6">
-                    <MaterialCommunityIcons
-                      name="script-text-outline"
-                      size={40}
-                      color="#A69FB2"
-                      style={{ opacity: 0.6 }}
-                    />
-                  </View>
-                  <Title className="text-center text-text-secondary/90 text-base font-medium mb-1">
-                    No hay movimientos
-                  </Title>
-                  <Span className="text-center text-text-secondary/70 text-sm max-w-[200px]">
-                    Las nuevas transacciones de esta cuenta aparecerán aquí.
-                  </Span>
-                </View>
-              )}
-            </ScrollView>
-          </View>
-        </View>
-      </SafeAreaView>
-    </LinearGradient>
+                ))}
+              </View>
+
+              <View className="flex-row justify-between mb-4 px-6">
+                <ActionButton
+                  label="Abono"
+                  icon={
+                    <MaterialCommunityIcons name="bank-transfer-in" size={22} color="#2D3A35" />
+                  }
+                  onPress={() => {}}
+                  className="flex-[1] mr-3"
+                />
+                <ActionButton
+                  label="Gasto"
+                  icon={
+                    <MaterialCommunityIcons name="bank-transfer-out" size={22} color="#2D3A35" />
+                  }
+                  onPress={() => {}}
+                  className="flex-[1] ml-3"
+                />
+              </View>
+
+              <View className="flex-[1] px-6">
+                <Title className="text-lg text-text-primary mb-3">Últimos movimientos</Title>
+                <ScrollView>
+                  {filteredTransactions.length > 0 ? (
+                    filteredTransactions.map(transaction => (
+                      <TransactionItem
+                        key={transaction.id}
+                        name={transaction.name}
+                        amount={transaction.amount}
+                        type={transaction.type}
+                        timestamp={transaction.timestamp}
+                        user={transaction.user}
+                      />
+                    ))
+                  ) : (
+                    <View className="items-center justify-center pt-10 pb-20">
+                      <View className="w-20 h-20 bg-surface rounded-2xl shadow-soft-sm items-center justify-center mb-6">
+                        <MaterialCommunityIcons
+                          name="script-text-outline"
+                          size={40}
+                          color="#A69FB2"
+                          style={{ opacity: 0.6 }}
+                        />
+                      </View>
+                      <Title className="text-center text-text-secondary/90 text-base font-medium mb-1">
+                        No hay movimientos
+                      </Title>
+                      <Span className="text-center text-text-secondary/70 text-sm max-w-[200px]">
+                        Las nuevas transacciones de esta cuenta aparecerán aquí.
+                      </Span>
+                    </View>
+                  )}
+                </ScrollView>
+              </View>
+            </View>
+          </SafeAreaView>
+        </LinearGradient>
+      </View>
+    </Drawer>
   );
 }
