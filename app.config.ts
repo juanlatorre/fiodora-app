@@ -5,7 +5,7 @@ import { type ConfigContext, type ExpoConfig } from 'expo/config';
 export default ({ config }: ConfigContext): ExpoConfig => {
   return {
     ...config,
-    name: 'fiodora',
+    name: 'Fiodora',
     slug: 'fiodora',
     version: '1.0.0',
     orientation: 'portrait',
