@@ -10,6 +10,7 @@ import { useFonts } from 'expo-font';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { AuthProvider } from '../hooks/AuthContext';
 import { QueryProvider } from '../providers/QueryProvider';
+import ToastContainer from 'toastify-react-native';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -55,6 +56,7 @@ export default function RootLayout() {
               <Stack.Screen name="(protected)" />
             </Stack>
             <StatusBar style="auto" />
+            <ToastContainer position="bottom" theme="dark" duration={3000} />
           </ThemeProvider>
         </GestureHandlerRootView>
       </AuthProvider>

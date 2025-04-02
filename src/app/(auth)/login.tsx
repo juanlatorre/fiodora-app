@@ -9,6 +9,7 @@ import { useAuth } from '../../hooks/AuthContext';
 import { graphql } from '../../gql/gql';
 import { LoginDocument } from '../../gql/graphql';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Toast } from 'toastify-react-native';
 
 graphql(`
   mutation Login($input: MutationLoginInput!) {
@@ -39,19 +40,20 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       const result = await mutateAsync({ input: { email, password } });
+
       if (result?.login?.__typename === 'MutationLoginSuccess' && result.login.data?.token) {
         await setToken(result.login.data.token);
+        Toast.success('Sesión iniciada correctamente');
       } else if (
         result?.login?.__typename === 'BaseError' ||
         result?.login?.__typename === 'ZodError'
       ) {
-        throw new Error(result.login.message || 'Error al iniciar sesión');
+        Toast.error(result.login.message || 'Error al iniciar sesión');
       } else {
-        throw new Error('Error al iniciar sesión');
+        Toast.error('Error al iniciar sesión');
       }
     } catch (error) {
-      console.error('Error al iniciar sesión:', error);
-      // Handle error (show toast, alert, etc.)
+      Toast.error('Error al iniciar sesión');
     }
   };
 
