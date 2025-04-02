@@ -144,7 +144,7 @@ export type LoginMutationVariables = Exact<{
 }>;
 
 
-export type LoginMutation = { __typename?: 'Mutation', login?: { __typename: 'BaseError', message?: string | null } | { __typename: 'MutationLoginSuccess', data: { __typename?: 'AuthPayload', token?: string | null } } | { __typename: 'ZodError', message?: string | null } | null };
+export type LoginMutation = { __typename?: 'Mutation', login?: { __typename: 'BaseError', message?: string | null } | { __typename: 'MutationLoginSuccess', data: { __typename?: 'AuthPayload', token?: string | null, user?: { __typename?: 'User', id?: string | null, name?: string | null, email?: string | null } | null } } | { __typename: 'ZodError', message?: string | null } | null };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -172,6 +172,11 @@ export const LoginDocument = new TypedDocumentString(`
     ... on MutationLoginSuccess {
       data {
         token
+        user {
+          id
+          name
+          email
+        }
       }
     }
     ... on BaseError {

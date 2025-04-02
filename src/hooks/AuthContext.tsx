@@ -1,12 +1,17 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import * as SecureStore from 'expo-secure-store';
+import type { User } from '../gql/graphql';
 
-const AUTH_TOKEN_KEY = 'auth_token';
+const AUTH_TOKEN_KEY = 'fiodora_auth_token';
+const USER_DATA_KEY = 'fiodora_user_data';
+
+type AuthUser = Required<Pick<User, 'id' | 'name' | 'email'>>;
 
 interface AuthContextType {
   token: string | null;
+  user: AuthUser | null;
   isLoading: boolean;
-  setToken: (token: string | null) => Promise<void>;
+  setAuth: (token: string | null, user: AuthUser | null) => Promise<void>;
   signOut: () => Promise<void>;
 }
 
@@ -14,31 +19,76 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [token, setTokenState] = useState<string | null>(null);
+  const [user, setUserState] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Load token from secure storage on mount
-    SecureStore.getItemAsync(AUTH_TOKEN_KEY).then((storedToken: string | null) => {
-      setTokenState(storedToken);
-      setIsLoading(false);
-    });
+    // Load token and user data from secure storage on mount
+    Promise.all([SecureStore.getItemAsync(AUTH_TOKEN_KEY), SecureStore.getItemAsync(USER_DATA_KEY)])
+      .then(([storedToken, storedUser]) => {
+        console.log('Loading from storage:', { storedToken, storedUser });
+
+        try {
+          setTokenState(storedToken);
+          if (storedUser) {
+            const parsedUser = JSON.parse(storedUser);
+            console.log('Parsed user:', parsedUser);
+            if (!parsedUser?.id || !parsedUser?.name || !parsedUser?.email) {
+              console.warn('Invalid user data in storage:', parsedUser);
+              setUserState(null);
+            } else {
+              setUserState(parsedUser);
+            }
+          } else {
+            setUserState(null);
+          }
+        } catch (error) {
+          console.error('Error parsing stored user:', error);
+          setUserState(null);
+        }
+
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('Error loading from storage:', error);
+        setIsLoading(false);
+      });
   }, []);
 
-  const setToken = async (newToken: string | null) => {
-    if (newToken) {
-      await SecureStore.setItemAsync(AUTH_TOKEN_KEY, newToken);
-    } else {
-      await SecureStore.deleteItemAsync(AUTH_TOKEN_KEY);
+  const setAuth = async (newToken: string | null, newUser: AuthUser | null) => {
+    try {
+      console.log('Setting auth:', { newToken, newUser });
+
+      if (newToken && newUser) {
+        await Promise.all([
+          SecureStore.setItemAsync(AUTH_TOKEN_KEY, newToken),
+          SecureStore.setItemAsync(USER_DATA_KEY, JSON.stringify(newUser)),
+        ]);
+        console.log('Stored auth data successfully');
+      } else {
+        await Promise.all([
+          SecureStore.deleteItemAsync(AUTH_TOKEN_KEY),
+          SecureStore.deleteItemAsync(USER_DATA_KEY),
+        ]);
+        console.log('Cleared auth data successfully');
+      }
+
+      setTokenState(newToken);
+      setUserState(newUser);
+    } catch (error) {
+      console.error('Error setting auth:', error);
+      // Still update state even if storage fails
+      setTokenState(newToken);
+      setUserState(newUser);
     }
-    setTokenState(newToken);
   };
 
   const signOut = async () => {
-    await setToken(null);
+    await setAuth(null, null);
   };
 
   return (
-    <AuthContext.Provider value={{ token, isLoading, setToken, signOut }}>
+    <AuthContext.Provider value={{ token, user, isLoading, setAuth, signOut }}>
       {children}
     </AuthContext.Provider>
   );

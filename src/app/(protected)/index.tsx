@@ -15,8 +15,11 @@ import Animated, {
   runOnJS,
 } from 'react-native-reanimated';
 import { Span } from '../../components/Span';
+import { useAuth } from '../../hooks/AuthContext';
 
 export default function HomeScreen() {
+  const { user } = useAuth();
+
   const [currentBalanceIndex, setCurrentBalanceIndex] = useState(0);
   const translateX = useSharedValue(0);
   const contextX = useSharedValue(0);
@@ -26,7 +29,6 @@ export default function HomeScreen() {
   const balances = [
     {
       id: '1',
-      owner: 'Juan',
       amount: 15245533,
       change: 421,
       nextMonthProjection: 155000,
@@ -35,7 +37,6 @@ export default function HomeScreen() {
     },
     {
       id: '2',
-      owner: 'Juan',
       amount: 32150,
       change: 650,
       nextMonthProjection: 98700,
@@ -223,8 +224,6 @@ export default function HomeScreen() {
     transform: [{ translateX: translateX.value }],
   }));
 
-  const currentBalance = balances[currentBalanceIndex];
-
   return (
     <LinearGradient
       colors={['#F0E7F5', '#D4C9E8']}
@@ -235,7 +234,7 @@ export default function HomeScreen() {
       <SafeAreaView className="flex-[1]">
         <View className="flex-[1] overflow-hidden">
           <View className="px-6">
-            <Header name={currentBalance?.owner ?? 'Cuenta'} onNotificationPress={() => {}} />
+            <Header name={user?.name ?? 'Invitado'} onNotificationPress={() => {}} />
           </View>
 
           <GestureDetector gesture={panGesture}>

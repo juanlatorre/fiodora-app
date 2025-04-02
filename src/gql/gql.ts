@@ -15,16 +15,16 @@ import * as types from './graphql';
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-    "\n  mutation Login($input: MutationLoginInput!) {\n    login(input: $input) {\n      __typename\n      ... on MutationLoginSuccess {\n        data {\n          token\n        }\n      }\n      ... on BaseError {\n        message\n      }\n      ... on ZodError {\n        message\n      }\n    }\n  }\n": typeof types.LoginDocument,
+    "\n  mutation Login($input: MutationLoginInput!) {\n    login(input: $input) {\n      __typename\n      ... on MutationLoginSuccess {\n        data {\n          token\n          user {\n            id\n            name\n            email\n          }\n        }\n      }\n      ... on BaseError {\n        message\n      }\n      ... on ZodError {\n        message\n      }\n    }\n  }\n": typeof types.LoginDocument,
 };
 const documents: Documents = {
-    "\n  mutation Login($input: MutationLoginInput!) {\n    login(input: $input) {\n      __typename\n      ... on MutationLoginSuccess {\n        data {\n          token\n        }\n      }\n      ... on BaseError {\n        message\n      }\n      ... on ZodError {\n        message\n      }\n    }\n  }\n": types.LoginDocument,
+    "\n  mutation Login($input: MutationLoginInput!) {\n    login(input: $input) {\n      __typename\n      ... on MutationLoginSuccess {\n        data {\n          token\n          user {\n            id\n            name\n            email\n          }\n        }\n      }\n      ... on BaseError {\n        message\n      }\n      ... on ZodError {\n        message\n      }\n    }\n  }\n": types.LoginDocument,
 };
 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  mutation Login($input: MutationLoginInput!) {\n    login(input: $input) {\n      __typename\n      ... on MutationLoginSuccess {\n        data {\n          token\n        }\n      }\n      ... on BaseError {\n        message\n      }\n      ... on ZodError {\n        message\n      }\n    }\n  }\n"): typeof import('./graphql').LoginDocument;
+export function graphql(source: "\n  mutation Login($input: MutationLoginInput!) {\n    login(input: $input) {\n      __typename\n      ... on MutationLoginSuccess {\n        data {\n          token\n          user {\n            id\n            name\n            email\n          }\n        }\n      }\n      ... on BaseError {\n        message\n      }\n      ... on ZodError {\n        message\n      }\n    }\n  }\n"): typeof import('./graphql').LoginDocument;
 
 
 export function graphql(source: string) {

@@ -18,6 +18,11 @@ graphql(`
       ... on MutationLoginSuccess {
         data {
           token
+          user {
+            id
+            name
+            email
+          }
         }
       }
       ... on BaseError {
@@ -33,26 +38,42 @@ graphql(`
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setToken } = useAuth();
+  const { setAuth } = useAuth();
 
   const { mutateAsync, isPending } = useMutation(LoginDocument);
 
   const handleLogin = async () => {
     try {
       const result = await mutateAsync({ input: { email, password } });
+      console.log('Login response:', JSON.stringify(result, null, 2));
 
-      if (result?.login?.__typename === 'MutationLoginSuccess' && result.login.data?.token) {
-        await setToken(result.login.data.token);
+      if (
+        result?.login?.__typename === 'MutationLoginSuccess' &&
+        result.login.data?.token &&
+        result.login.data.user?.id &&
+        result.login.data.user.name &&
+        result.login.data.user.email
+      ) {
+        const userData = {
+          id: result.login.data.user.id,
+          name: result.login.data.user.name,
+          email: result.login.data.user.email,
+        };
+        console.log('Setting auth with user data:', userData);
+        await setAuth(result.login.data.token, userData);
         Toast.success('Sesión iniciada correctamente');
       } else if (
         result?.login?.__typename === 'BaseError' ||
         result?.login?.__typename === 'ZodError'
       ) {
+        console.warn('Login error:', result.login.message);
         Toast.error(result.login.message || 'Error al iniciar sesión');
       } else {
+        console.warn('Unknown login response type:', result?.login?.__typename);
         Toast.error('Error al iniciar sesión');
       }
     } catch (error: any) {
+      console.error('Login error:', error);
       Toast.error('Error al iniciar sesión');
     }
   };
