@@ -11,8 +11,8 @@ export function Menu() {
   const buildNumber = Constants.expoConfig?.ios?.buildNumber || '1';
 
   return (
-    <LinearGradient colors={['#F0E7F5', '#D4C9E8']} className="flex-1 h-full">
-      <View className="flex-1 p-6">
+    <LinearGradient colors={['#F0E7F5', '#D4C9E8']} className="flex-[1] h-full">
+      <View className="flex-[1] p-6">
         {/* User Info Section */}
         <View className="mb-8">
           <Title className="text-text-primary text-2xl">{user?.name}</Title>
@@ -20,7 +20,7 @@ export function Menu() {
         </View>
 
         {/* Menu Items */}
-        <View className="flex-1">
+        <View className="flex-[1]">
           <TouchableOpacity
             className="flex-row items-center py-4 px-2 rounded-lg bg-white/20"
             onPress={signOut}

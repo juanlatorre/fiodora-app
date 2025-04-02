@@ -80,12 +80,12 @@ export default function Login() {
       end={{ x: 1, y: 1 }}
       style={{ flex: 1 }}
     >
-      <SafeAreaView className="flex-1">
+      <SafeAreaView className="flex-[1]">
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-          className="flex-1"
+          className="flex-[1]"
         >
-          <View className="flex-1 items-center justify-center px-4">
+          <View className="flex-[1] items-center justify-center px-4">
             <Text className="text-4xl font-bold text-text-primary mb-8 tracking-tight">
               Fiodora
             </Text>

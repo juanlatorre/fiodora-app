@@ -25,7 +25,7 @@ export function TransactionItem({
       className="flex-row items-center justify-between py-2.5 px-4 bg-surface rounded-xl mb-1"
       activeOpacity={0.8}
     >
-      <View className="flex-row items-center flex-1">
+      <View className="flex-row items-center flex-[1]">
         <View
           className={`w-1 h-8 rounded-full mr-3 ${
             user === 'juan' ? 'bg-blue-400/50' : 'bg-pink-400/50'
