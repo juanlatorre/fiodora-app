@@ -16,6 +16,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ios: {
       supportsTablet: true,
     },
+    extra: {
+      eas: {
+        projectId: 'bd8c80fb-2776-41ea-be6f-8dc76cca5b41',
+      },
+    },
     android: {
       adaptiveIcon: {
         foregroundImage: './assets/images/adaptive-icon.png',
