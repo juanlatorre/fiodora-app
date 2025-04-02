@@ -1,44 +1,51 @@
-import { View, TouchableOpacity } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
+import { Title } from './Title';
+import { Span } from './Span';
+import { useAuth } from '../hooks/AuthContext';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import Constants from 'expo-constants';
-import { Title } from './Title';
-import { useAuth } from '../hooks/AuthContext';
+import * as Constants from 'expo-constants';
+import { Avatar } from './Avatar';
 
 export function Menu() {
   const { user, signOut } = useAuth();
-  const version = Constants.expoConfig?.version || '1.0.0';
-  const buildNumber = Constants.expoConfig?.ios?.buildNumber || '1';
 
   return (
-    <LinearGradient colors={['#F0E7F5', '#D4C9E8']} className="flex-[1] h-full">
-      <View className="flex-[1] p-6">
-        {/* User Info Section */}
-        <View className="mb-8">
-          <Title className="text-text-primary text-2xl">{user?.name}</Title>
-          <Title className="text-text-primary/80 text-base mt-1">{user?.email}</Title>
-        </View>
+    <LinearGradient
+      colors={['#F0E7F5', '#D4C9E8']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={{ flex: 1 }}
+    >
+      <SafeAreaView className="flex-[1]">
+        <View className="flex-[1] p-6">
+          <View className="flex-[1]">
+            <View className="mb-6 flex-row items-center">
+              <Avatar name={user?.name ?? 'Usuario'} size="md" className="mr-4" />
+              <View>
+                <Title className="text-xl text-text-primary">{user?.name}</Title>
+                <Span className="text-sm text-text-secondary">{user?.email}</Span>
+              </View>
+            </View>
 
-        {/* Menu Items */}
-        <View className="flex-[1]">
-          <TouchableOpacity
-            className="flex-row items-center py-4 px-2 rounded-lg bg-white/20"
-            onPress={signOut}
-            accessibilityRole="button"
-            accessibilityLabel="Cerrar sesión"
-          >
-            <MaterialCommunityIcons name="logout" size={24} color="#1F1A24" />
-            <Title className="text-text-primary ml-3">Cerrar sesión</Title>
-          </TouchableOpacity>
-        </View>
+            <View className="flex-[1]">
+              <View
+                className="flex-row items-center py-3 px-4 rounded-2xl bg-white/50"
+                onTouchEnd={signOut}
+              >
+                <MaterialCommunityIcons name="logout" size={20} color="#352F3D" />
+                <Title className="text-base text-text-primary ml-3">Cerrar sesión</Title>
+              </View>
+            </View>
 
-        {/* Version Info */}
-        <View className="mt-auto">
-          <Title className="text-text-primary/60 text-sm">
-            Version {version} (Build {buildNumber})
-          </Title>
+            <View>
+              <Span className="text-xs text-text-secondary text-center">
+                Versión {Constants.default.expoConfig?.version}
+              </Span>
+            </View>
+          </View>
         </View>
-      </View>
+      </SafeAreaView>
     </LinearGradient>
   );
 }
