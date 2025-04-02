@@ -1,93 +1,102 @@
-import { SafeAreaView, View, TouchableOpacity } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Title } from '../../components/Title';
-import { Span } from '../../components/Span';
+import { useState } from 'react';
+import { View, SafeAreaView } from 'react-native';
+import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
-import { TextInput } from 'react-native';
-import { router, Redirect } from 'expo-router';
+import { Input } from '../../components/Input';
+import { Title } from '../../components/Title';
+import { useMutation } from '../../hooks/useGraphQL';
+import { useAuth } from '../../hooks/AuthContext';
+import { graphql } from '../../gql/gql';
+import { LoginDocument } from '../../gql/graphql';
+import { LinearGradient } from 'expo-linear-gradient';
 
-// API: https://fiodora-api-production.up.railway.app/graphql
-
-export default function LoginScreen() {
-  // If already authenticated, redirect to home
-  const isAuthenticated = false; // Replace with your auth check
-  if (isAuthenticated) {
-    return <Redirect href="/" />;
+graphql(`
+  mutation Login($input: MutationLoginInput!) {
+    login(input: $input) {
+      __typename
+      ... on MutationLoginSuccess {
+        data {
+          token
+        }
+      }
+      ... on BaseError {
+        message
+      }
+      ... on ZodError {
+        message
+      }
+    }
   }
+`);
 
-  const handleLogin = () => {
-    // Here you would typically validate credentials
-    // For now, we'll just navigate to the main app
-    router.replace('/');
+export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { setToken } = useAuth();
+
+  const { mutateAsync, isPending } = useMutation(LoginDocument);
+
+  const handleLogin = async () => {
+    try {
+      const result = await mutateAsync({ input: { email, password } });
+      if (result?.login?.__typename === 'MutationLoginSuccess' && result.login.data?.token) {
+        await setToken(result.login.data.token);
+      } else if (
+        result?.login?.__typename === 'BaseError' ||
+        result?.login?.__typename === 'ZodError'
+      ) {
+        throw new Error(result.login.message || 'Error al iniciar sesión');
+      } else {
+        throw new Error('Error al iniciar sesión');
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      // Handle error (show toast, alert, etc.)
+    }
   };
 
   return (
-    <LinearGradient
-      colors={['#F0E7F5', '#D4C9E8']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={{ flex: 1 }}
-    >
-      <SafeAreaView className="flex-1">
-        <View className="flex-1 px-6 justify-center">
-          <View className="items-center mb-12">
-            <View className="w-20 h-20 bg-surface rounded-2xl shadow-soft-sm items-center justify-center mb-6">
-              <MaterialCommunityIcons
-                name="wallet-outline"
-                size={40}
-                color="#7C3AED"
-                style={{ opacity: 0.8 }}
-              />
-            </View>
-            <Title className="text-3xl text-text-primary mb-2">Bienvenido</Title>
-            <Span className="text-text-secondary text-center">Inicia sesión para continuar</Span>
-          </View>
-
-          <Card className="mb-6">
+    <SafeAreaView className="flex-1 bg-background">
+      <LinearGradient
+        colors={['#6366f1', '#8b5cf6']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        className="absolute inset-0 h-64"
+      />
+      <View className="flex-1 items-center justify-center px-4">
+        <Card className="w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden">
+          <View className="p-8">
+            <Title className="text-2xl font-bold text-center mb-8 text-gray-900">
+              Iniciar Sesión
+            </Title>
             <View className="space-y-4">
-              <View>
-                <Span className="text-sm text-text-secondary mb-1.5">Correo electrónico</Span>
-                <View className="bg-background rounded-xl px-4 py-3.5 shadow-inset">
-                  <TextInput
-                    placeholder="ejemplo@correo.com"
-                    placeholderTextColor="#A69FB2"
-                    className="font-base-regular text-text-primary"
-                    autoCapitalize="none"
-                    keyboardType="email-address"
-                  />
-                </View>
-              </View>
-
-              <View>
-                <Span className="text-sm text-text-secondary mb-1.5">Contraseña</Span>
-                <View className="bg-background rounded-xl px-4 py-3.5 shadow-inset">
-                  <TextInput
-                    placeholder="••••••••"
-                    placeholderTextColor="#A69FB2"
-                    className="font-base-regular text-text-primary"
-                    secureTextEntry
-                  />
-                </View>
-              </View>
-
-              <TouchableOpacity
+              <Input
+                placeholder="Correo electrónico"
+                value={email}
+                onChangeText={setEmail}
+                autoCapitalize="none"
+                keyboardType="email-address"
+                className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-100 text-gray-900"
+              />
+              <Input
+                placeholder="Contraseña"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+                className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-100 text-gray-900"
+              />
+              <Button
                 onPress={handleLogin}
-                className="bg-surface rounded-xl py-3.5 shadow-soft items-center mt-2"
-                activeOpacity={0.9}
+                disabled={isPending}
+                className="w-full py-3.5 bg-primary rounded-xl disabled:opacity-50"
+                textClassName="text-white font-medium text-base"
               >
-                <Title className="text-successAlter text-base">Iniciar sesión</Title>
-              </TouchableOpacity>
+                {isPending ? 'Cargando...' : 'Iniciar Sesión'}
+              </Button>
             </View>
-          </Card>
-
-          <TouchableOpacity className="items-center" activeOpacity={0.7}>
-            <Span className="text-text-secondary">
-              ¿No tienes una cuenta? <Title className="text-successAlter">Regístrate</Title>
-            </Span>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
-    </LinearGradient>
+          </View>
+        </Card>
+      </View>
+    </SafeAreaView>
   );
 }

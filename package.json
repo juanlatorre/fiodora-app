@@ -7,7 +7,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
@@ -44,7 +45,11 @@
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
+    "@0no-co/graphqlsp": "^1.12.16",
     "@babel/core": "^7.25.2",
+    "@graphql-codegen/cli": "5.0.5",
+    "@graphql-codegen/client-preset": "4.8.0",
+    "@graphql-codegen/schema-ast": "^4.1.0",
     "@graphql-eslint/eslint-plugin": "^4.4.0",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.3.12",
@@ -58,7 +63,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-native": "^5.0.0",
     "prettier": "^3.5.3",
-    "typescript": "^5.3.3"
+    "typescript": "^5.8.2"
   },
   "private": true
 }

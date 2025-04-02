@@ -1,0 +1,118 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+"""The payload returned when a user logs in"""
+type AuthPayload {
+  """Auth token"""
+  token: ID
+  """User entity"""
+  user: User
+}
+
+type BaseError implements Error {
+  message: String
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""
+A field whose value conforms to the standard internet email address format as specified in HTML Spec: https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address.
+"""
+scalar EmailAddress
+
+interface Error {
+  message: String
+}
+
+type Mutation {
+  """Create a new user"""
+  createUser(input: MutationCreateUserInput!): MutationCreateUserResult
+  """Login a user and return a token"""
+  login(input: MutationLoginInput!): MutationLoginResult
+}
+
+input MutationCreateUserInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+union MutationCreateUserResult = BaseError | MutationCreateUserSuccess | ZodError
+
+type MutationCreateUserSuccess {
+  data: AuthPayload!
+}
+
+input MutationLoginInput {
+  email: String!
+  password: String!
+}
+
+union MutationLoginResult = BaseError | MutationLoginSuccess | ZodError
+
+type MutationLoginSuccess {
+  data: AuthPayload!
+}
+
+"""A string that cannot be passed as an empty value"""
+scalar NonEmptyString
+
+"""Floats that will have a value of 0 or more."""
+scalar NonNegativeFloat
+
+"""Integers that will have a value of 0 or more."""
+scalar NonNegativeInt
+
+"""Integers that will have a value greater than 0."""
+scalar PositiveInt
+
+type Query {
+  """Get user by id"""
+  user(id: UUID!): QueryUserResult
+}
+
+union QueryUserResult = BaseError | QueryUserSuccess | ZodError
+
+type QueryUserSuccess {
+  data: User!
+}
+
+"""
+A field whose value conforms to the standard URL format as specified in RFC3986: https://www.ietf.org/rfc/rfc3986.txt.
+"""
+scalar URL
+
+"""
+A field whose value is a generic Universally Unique Identifier: https://en.wikipedia.org/wiki/Universally_unique_identifier.
+"""
+scalar UUID
+
+"""User entity"""
+type User {
+  """User creation date"""
+  createdAt: DateTime
+  """User email"""
+  email: String
+  """User UUID"""
+  id: ID
+  """User name"""
+  name: String
+  """User role"""
+  role: String
+  updatedAt: DateTime
+}
+
+type ZodError implements Error {
+  fieldErrors: [ZodFieldError!]
+  message: String
+}
+
+type ZodFieldError {
+  message: String
+  path: [String!]
+}
