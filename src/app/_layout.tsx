@@ -12,7 +12,6 @@ import { AuthProvider } from '../hooks/AuthContext';
 import { QueryProvider } from '../providers/QueryProvider';
 import ToastContainer from 'toastify-react-native';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export const unstable_settings = {
