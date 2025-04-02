@@ -4,7 +4,7 @@ export async function execute<TResult, TVariables extends Record<string, unknown
   query: TypedDocumentString<TResult, TVariables>,
   variables?: TVariables,
 ): Promise<TResult> {
-  const response = await fetch(process.env.NEXT_PUBLIC_GRAPHQL_ENDPOINT!, {
+  const response = await fetch('https://fiodora-api-production.up.railway.app/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

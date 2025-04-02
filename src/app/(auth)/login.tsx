@@ -52,7 +52,7 @@ export default function Login() {
       } else {
         Toast.error('Error al iniciar sesión');
       }
-    } catch (error) {
+    } catch (error: any) {
       Toast.error('Error al iniciar sesión');
     }
   };
