@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, SafeAreaView } from 'react-native';
+import { View, SafeAreaView, KeyboardAvoidingView, Platform, Text } from 'react-native';
 import { Button } from '../../components/Button';
 import { Card } from '../../components/Card';
 import { Input } from '../../components/Input';
@@ -56,47 +56,56 @@ export default function Login() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
-      <LinearGradient
-        colors={['#6366f1', '#8b5cf6']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        className="absolute inset-0 h-64"
-      />
-      <View className="flex-1 items-center justify-center px-4">
-        <Card className="w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden">
-          <View className="p-8">
-            <Title className="text-2xl font-bold text-center mb-8 text-gray-900">
-              Iniciar Sesión
-            </Title>
-            <View className="space-y-4">
-              <Input
-                placeholder="Correo electrónico"
-                value={email}
-                onChangeText={setEmail}
-                autoCapitalize="none"
-                keyboardType="email-address"
-                className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-100 text-gray-900"
-              />
-              <Input
-                placeholder="Contraseña"
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry
-                className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-100 text-gray-900"
-              />
-              <Button
-                onPress={handleLogin}
-                disabled={isPending}
-                className="w-full py-3.5 bg-primary rounded-xl disabled:opacity-50"
-                textClassName="text-white font-medium text-base"
-              >
-                {isPending ? 'Cargando...' : 'Iniciar Sesión'}
-              </Button>
-            </View>
+    <LinearGradient
+      colors={['#F0E7F5', '#D4C9E8']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+      style={{ flex: 1 }}
+    >
+      <SafeAreaView className="flex-1">
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          className="flex-1"
+        >
+          <View className="flex-1 items-center justify-center px-4">
+            <Text className="text-4xl font-bold text-text-primary mb-8 tracking-tight">
+              Fiodora
+            </Text>
+            <Card className="w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden">
+              <View className="p-8">
+                <Title className="text-2xl font-bold text-center mb-8 text-gray-900">
+                  Iniciar Sesión
+                </Title>
+                <View>
+                  <Input
+                    placeholder="Correo electrónico"
+                    value={email}
+                    onChangeText={setEmail}
+                    autoCapitalize="none"
+                    keyboardType="email-address"
+                    className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-100 text-gray-900 mb-4"
+                  />
+                  <Input
+                    placeholder="Contraseña"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry
+                    className="w-full px-4 py-3.5 rounded-xl bg-gray-50 border border-gray-100 text-gray-900 mb-4"
+                  />
+                  <Button
+                    onPress={handleLogin}
+                    disabled={isPending}
+                    className="w-full py-3.5 bg-text-primary rounded-xl disabled:opacity-50"
+                    textClassName="text-white font-medium text-base"
+                  >
+                    {isPending ? 'Cargando...' : 'Iniciar Sesión'}
+                  </Button>
+                </View>
+              </View>
+            </Card>
           </View>
-        </Card>
-      </View>
-    </SafeAreaView>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
